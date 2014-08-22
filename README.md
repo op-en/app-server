@@ -10,7 +10,7 @@ Client example:
         socket.on('mqtt', function (msg) {
           console.log(msg.topic+' '+msg.payload);
         });
-        socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
+        socket.emit('subscribe',{topic:'/some/sensor/data'});
     }); 
 
  
