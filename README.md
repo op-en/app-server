@@ -10,9 +10,8 @@ Socket.IO server that allows access to an MQTT broaker.
         var elmarr=msg.topic.split("/");
         var elm=elmarr[3];
         console.log(msg.topic+' '+msg.payload);
-
-    });
-     socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
+      });
+      socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
      
     });
 
