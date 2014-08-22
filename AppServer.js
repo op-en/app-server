@@ -1,8 +1,7 @@
 var sys = require('sys');
 var net = require('net');
 //var mqtt = require('mqtt');
-var mqtt = require('mqtt');
-
+//var mqtt = require('mqtt');
 var io  = require('socket.io').listen(5000);
 
 io.sessionid = 0;
@@ -13,9 +12,12 @@ io.on('connection', function(socket){
   this.sessionid = this.sessionid + 1;
   socket.sessionid = this.sessionid
 
-  socket.mqtt = mqtt.connect('mqtt://appserver:sde32dDDgl3234@127.0.0.1?clientId=appserver');
+  var mqtt = require('mqtt');
+  socket.mqtt = mqtt.connect('mqtt://appserver:sde32dDDgl3234@127.0.0.1');
   socket.mqtt.subscribe('appserver/session/' + socket.sessionid + "/#");
   socket.mqtt.subscribe('appserver/session/all/#');
+  //Temp fix
+  socket.mqtt.subscribe('#');
   socket.mqtt.publish('appserver/session/' + socket.sessionid,"Connected")
 
   //Subscribe
