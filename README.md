@@ -3,11 +3,11 @@ AppServer
 
 Socket.IO server that allows access to an MQTT broaker. 
 
+Client example:
+
     var socket = io.connect('http://localhost:5000');
       socket.on('connect', function () {
         socket.on('mqtt', function (msg) {
-          var elmarr=msg.topic.split("/");
-          var elm=elmarr[3];
           console.log(msg.topic+' '+msg.payload);
         });
         socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
