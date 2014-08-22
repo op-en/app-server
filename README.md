@@ -12,8 +12,7 @@ Socket.IO server that allows access to an MQTT broaker.
         console.log(msg.topic+' '+msg.payload);
       });
       socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
-     
-    }); 
+  }); 
 
  
 
