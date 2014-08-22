@@ -5,20 +5,40 @@ var mqtt = require('mqtt');
 
 var io  = require('socket.io').listen(5000);
 
+io.sessionid = 0;
+
 io.on('connection', function(socket){
   console.log('a user connected');
+  this.sessionid = this.sessionid || 0;
+  this.sessionid = this.sessionid + 1;
+  socket.sessionid = this.sessionid
 
-  socket.mqtt = mqtt.createClient();
-  socket.mqtt.subscribe('#');
+  socket.mqtt = mqtt.connect('mqtt://appserver:sde32dDDgl3234@127.0.0.1?clientId=appserver');
+  socket.mqtt.subscribe('appserver/session/' + socket.sessionid + "/#");
+  socket.mqtt.subscribe('appserver/session/all/#');
+  socket.mqtt.publish('appserver/session/' + socket.sessionid,"Connected")
 
-  //Forward all messages to socket.io
+  //Subscribe
+  socket.on('subscribe', function(data) {
+    this.mqtt.subscribe(data.topic);    
+  });
+
+  //Forward all mqtt messages to socket.io
   socket.mqtt.on('message', function(topic, message) {
-    console.log(message);
+    //console.log(message);
     io.sockets.emit('mqtt',{'topic':String(topic),'payload':String(message)});
   });
 
+  //Publish 
+  socket.on('publish', function(data) {
+    this.mqtt.publish('appserver/session/' + this.sessionid + "/" + data.topic,data.payload);
+  });
+
+  //Disconnection
   socket.on('disconnect', function(){
     console.log('user disconnected');
+    socket.mqtt.publish('appserver/session/' + socket.sessionid,"Disconnected")
+    this.mqtt.end()
   });
 });
 
