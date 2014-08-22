@@ -25,4 +25,5 @@ When the clients publish by:
 
 The message ("test") will be sent to the path AppServer/session/{N}/{path} 
 
+Where N is the session id and path the topic in the emit command. 
 
