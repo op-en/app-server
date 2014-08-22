@@ -4,22 +4,19 @@ AppServer
 Socket.IO server that allows access to an MQTT broaker. 
 
 
-"<script type="text/javascript" src="socket.io.min.js"></script>
-"<script type="text/javascript" src="jquery-1.4.2.js"></script>
-"<script type="text/javascript">
-"  var socket = io.connect('http://localhost:5000');
-"    socket.on('connect', function () {
-"      socket.on('mqtt', function (msg) {
-"        var elmarr=msg.topic.split("/");
-"        var elm=elmarr[3];
-"        console.log(msg.topic+' '+msg.payload);
-"
-"    });
-"     socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
-"     
-"    });
-"</script>
+  var socket = io.connect('http://localhost:5000');
+    socket.on('connect', function () {
+      socket.on('mqtt', function (msg) {
+        var elmarr=msg.topic.split("/");
+        var elm=elmarr[3];
+        console.log(msg.topic+' '+msg.payload);
 
+    });
+     socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
+     
+    });
+
+ 
 
 The appserver connects using username appserver (change the password in the code).
 
