@@ -15,6 +15,7 @@
  ### END INIT INFO
  
  #Settings
+ NAME='appserver'
  SERVICE='AppServer.js'
  OPTIONS=''
  USERNAME='iot'
@@ -38,7 +39,7 @@
    else
      echo "Starting $SERVICE..."
      cd $APP_PATH
-     as_user "cd $APP_PATH && screen -h $HISTORY -dmS nodered $INVOCATION"
+     as_user "cd $APP_PATH && screen -h $HISTORY -dmS $NAME $INVOCATION"
      sleep 7
      if pgrep -u $USERNAME -f $SERVICE > /dev/null
      then
