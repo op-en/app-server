@@ -1,9 +1,9 @@
- #!/bin/bash
- # /etc/init.d/appserver
- # version 0.3.9 2014-10-25 (YYYY-MM-DD)
+#!/bin/bash
+# /etc/init.d/appserver
+# version 1 2014-10-25 (YYYY-MM-DD)
  
  ### BEGIN INIT INFO
- # Provides:   nodered
+ # Provides:       appserver
  # Required-Start: $local_fs $remote_fs screen-cleanup
  # Required-Stop:  $local_fs $remote_fs
  # Should-Start:   $network
@@ -19,9 +19,10 @@
  SERVICE='AppServer.js'
  OPTIONS=''
  USERNAME='iot'
- APP_PATH='/home/iot/MQTTAppServer'
+ APP_PATH='/home/iot/AppServer'
  HISTORY=1024
- INVOCATION="node $SERVICE" 
+ NODE='~/.nvm/v0.10.32/bin/node'
+ INVOCATION="$NODE $SERVICE" 
  ME=`whoami`
 
  as_user() {
@@ -32,7 +33,7 @@
    fi
  }
  
- my_start() {
+ start() {
    if  pgrep -u $USERNAME -f $SERVICE > /dev/null
    then
      echo "$SERVICE is already running!"
@@ -51,7 +52,7 @@
  }
  
  
- my_stop() {
+ stop() {
    if pgrep -u $USERNAME -f $SERVICE > /dev/null
    then
      echo "Stopping $SERVICE"
@@ -79,14 +80,14 @@
  #Start-Stop here
  case "$1" in
    start)
-     my_start
+     start
      ;;
    stop)
-     my_stop
+     stop
      ;;
    restart)
-     my_stop
-     my_start
+     stop
+     start
      ;;
    status)
      if pgrep -u $USERNAME -f $SERVICE > /dev/null
