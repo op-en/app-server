@@ -15,13 +15,15 @@
  ### END INIT INFO
  
  #Settings
- SERVICE='EnergyMeterPulsReaderMQTT.py'
+ SERVICE='AppServer.js'
  OPTIONS=''
  USERNAME='iot'
- APP_PATH="/home/$USERNAME/repos/RPI-EEM"
+ APP_PATH="/home/$USERNAME/repos/AppServer"
  HISTORY=1024
- NAME='eem'
- INVOCATION="python $SERVICE" 
+ NAME='appserver'
+ NODE_VERSION='0.10.36'
+ NODE=/home/$USERNAME/.nvm/v$NODE_VERSION/bin/node
+ INVOCATION="$NODE $SERVICE" 
  ME=`whoami`
  
  as_user() {
