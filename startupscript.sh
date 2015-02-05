@@ -48,6 +48,7 @@
        echo "$SERVICE is now running."
      else
        echo "Error! Could not start $SERVICE!"
+       echo "CMD: cd $APP_PATH && screen -h $HISTORY -dmS $NAME $INVOCATION"
      fi
    fi
  }
