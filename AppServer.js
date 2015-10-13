@@ -17,7 +17,7 @@ io.on('connection', function(socket){
   socket.mqtt.subscribe('appserver/session/' + socket.sessionid + "/#");
   socket.mqtt.subscribe('appserver/session/all/#');
   //Temp fix
-  socket.mqtt.subscribe('#');
+  //socket.mqtt.subscribe('#');
   socket.mqtt.publish('appserver/session/' + socket.sessionid,"Connected")
 
   //Subscribe
