@@ -28,7 +28,7 @@ io.on('connection', function(socket){
   //Forward all mqtt messages to socket.io
   socket.mqtt.on('message', function(topic, message) {
     //console.log(message);
-    io.sockets.emit('mqtt',{'topic':String(topic),'payload':String(message)});
+    socket.emit('mqtt',{'topic':String(topic),'payload':String(message)});
   });
 
   //Publish 
