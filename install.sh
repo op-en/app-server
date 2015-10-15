@@ -2,6 +2,7 @@
 
 echo "Installing AppServer"
 
+#Check if repo directory exists
 if [ ! -d "~/repos" ]; then
   mkdir ~/repos
 fi
