@@ -21,8 +21,8 @@
  APP_PATH="/home/$USERNAME/repos/AppServer"
  HISTORY=1024
  NAME='appserver'
- NODE_VERSION='0.10.36'
- NODE=/home/$USERNAME/.nvm/v$NODE_VERSION/bin/node
+ NODE_VERSION='0.12.7'
+ NODE=/home/$USERNAME/.nvm/versions/node/v$NODE_VERSION/bin/node
  INVOCATION="$NODE $SERVICE" 
  ME=`whoami`
  
