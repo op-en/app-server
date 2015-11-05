@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LeoFidjeland/op-en-AppServer.git"
+    "url": "git+https://github.com/LeoFidjeland/op-en-app-server.git"
   },
   "keywords": [
     "op-en",
     "mqtt",
     "socket.io"
   ],
-  "author": "Leo Fidjeland",
-  "license": "ISC",
+  "author": "Leo Fidjeland(leo.fidjeland@gmail.com)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LeoFidjeland/op-en-AppServer/issues"
+    "url": "https://github.com/LeoFidjeland/op-en-app-server/issues"
   },
-  "homepage": "https://github.com/LeoFidjeland/op-en-AppServer#readme",
+  "homepage": "https://github.com/LeoFidjeland/op-en-app-server#readme",
   "dependencies": {
     "logfmt": "^1.2.0",
     "mqtt": "^1.5.0",
