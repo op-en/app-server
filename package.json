@@ -4,6 +4,7 @@
   "description": "Socket.IO server that allows access to an MQTT broker.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha test.js"
   },
   "bin" : {

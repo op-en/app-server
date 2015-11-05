@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var mqtt = require('mqtt');
 var log = require('logfmt');
 
