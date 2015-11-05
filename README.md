@@ -1,7 +1,9 @@
 AppServer
 ===========
 
-Socket.IO server that allows access to an MQTT broaker. 
+## Usage
+
+Socket.IO server that allows access to an MQTT broker.
 
 Client example:
 
@@ -11,9 +13,9 @@ Client example:
           console.log(msg.topic+' '+msg.payload);
         });
         socket.emit('subscribe',{topic:'/some/sensor/data'});
-    }); 
+    });
 
- 
+
 
 The appserver connects using username appserver (change the password in the code).
 
@@ -23,7 +25,14 @@ When the clients publish by:
 
     socket.emit('publish',{topic:'/path',payload:'test'});
 
-The message ("test") will be sent to the path AppServer/session/{N}/{path} 
+The message ("test") will be sent to the path AppServer/session/{N}/{path}
 
-Where N is the session id and path the topic in the emit command. 
+Where N is the session id and path the topic in the emit command.
 
+## Testing
+
+There is a suite of Mocha unit tests, run them with
+
+```
+npm test
+```
