@@ -11,10 +11,13 @@ var config = {
 
 var io  = require('socket.io').listen(config.port);
 io.sessionid = 0;
-log.log({type: "info", msg: "App server started", port: config.port});
 
 var host = config.mqtt_host;
 host += config.mqtt_login ? config.mqtt_login + "@" : "";
+
+log.log({type: "info", msg: "App server started", port: config.port, host: host});
+
+
 
 io.on('connection', function(socket){
   this.sessionid = this.sessionid || 0;
