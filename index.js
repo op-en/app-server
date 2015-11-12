@@ -7,6 +7,7 @@ var config = {
   port:         process.env.PORT    || 5000,
   mqtt_host:    process.env.MQTT    || "127.0.0.1",
   mqtt_login:   process.env.LOGIN   || "",
+  verbose:      process.env.VERBOSE || false,
 };
 
 var io  = require('socket.io').listen(config.port);
@@ -27,9 +28,20 @@ io.on('connection', function(socket){
     log.log({type: "error", msg: error.message});
   });
 
-  broker.on('connect',function(error){
-    log.log({type: "info", msg: "MQTT connected", host: config.mqtt_host});
+  //This is what you get when the connection to the broker fails
+  broker.on('offline',function(error){
+    log.log({type: "error", msg: "MQTT offline", host: config.mqtt_host});
   });
+
+  if(config.verbose){
+    broker.on('connect',function(error){
+      log.log({type: "info", msg: "MQTT connected", host: config.mqtt_host});
+    });
+
+    broker.on('close',function(error){
+      log.log({type: "info", msg: "MQTT closed", host: config.mqtt_host});
+    });
+  }
 
   broker.subscribe('appserver/session/' + socket.sessionid + "/#");
   broker.subscribe('appserver/session/all/#');
