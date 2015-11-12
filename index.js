@@ -4,20 +4,16 @@ var mqtt = require('mqtt');
 var log = require('logfmt');
 
 var config = {
-  port:         process.env.PORT || 5000,
-  mqtt_host:    process.env.MQTT || "127.0.0.1",
-  mqtt_login:   process.env.LOGIN|| ""
+  port:         process.env.PORT    || 5000,
+  mqtt_host:    process.env.MQTT    || "127.0.0.1",
+  mqtt_login:   process.env.LOGIN   || "",
 };
 
 var io  = require('socket.io').listen(config.port);
 io.sessionid = 0;
 
-var host = config.mqtt_host;
-host += config.mqtt_login ? config.mqtt_login + "@" : "";
-
+var host = config.mqtt_login ? config.mqtt_login + "@" + config.mqtt_host : config.mqtt_host;
 log.log({type: "info", msg: "App server started", port: config.port, host: host});
-
-
 
 io.on('connection', function(socket){
   this.sessionid = this.sessionid || 0;
@@ -26,7 +22,6 @@ io.on('connection', function(socket){
   log.log({type: "info", msg: "User connected", session: this.sessionid});
 
   // Connect to the MQTT broker
-
   var broker = mqtt.connect('mqtt://' + host);
   broker.on('error',function(error){
     log.log({type: "error", msg: error.message});
