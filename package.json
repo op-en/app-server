@@ -1,6 +1,6 @@
 {
   "name": "op-en-app-server",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Socket.IO server that allows access to an MQTT broker.",
   "main": "index.js",
   "scripts": {
