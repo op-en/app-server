@@ -72,3 +72,8 @@ io.on('connection', function(socket){
     broker.end();
   });
 });
+
+process.on('SIGTERM', function () {
+  log.log({type: 'info', msg: "SIGTERM: Shutting down"});
+  process.exit(0);
+});
