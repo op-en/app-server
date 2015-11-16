@@ -5,7 +5,7 @@ MAINTAINER Leo Fidjeland (leo.fidjeland@gmail.com)
 
 # The app server will relay mqtt to a socket.io connection
 # We install it as a global package
-ENV APP_SERVER_VERSION 0.1.4
+ENV APP_SERVER_VERSION 0.1.5
 RUN npm install -g --unsafe-perm op-en-app-server@${APP_SERVER_VERSION}
 EXPOSE 5000
 WORKDIR /opt
