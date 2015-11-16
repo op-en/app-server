@@ -4,7 +4,7 @@ This is part of the [Open Energy Project](http://op-en.se/), a research project 
 
 ## Description
 
-This Node.js server is a bridge from MQTT to websockets using socket.io. The server is connected to a MQTT broker and relays all messages that the connected client requests.
+This Node.js server is a bridge from MQTT to websockets using socket.io. The server is connected to an MQTT broker and relays all messages that the connected client requests.
 
 If messages are published to the server, they are forwarded to the MQTT broker under the 'appserver/session/[id]' topic.
 
@@ -22,7 +22,7 @@ See index.js for default config.
 
 ## Starting the server
 
-When installed as a global package, the server simple be started by running:
+When installed as a global package, the server can simply be started by running:
 ```
 op-en-app-server
 ```
@@ -34,7 +34,7 @@ Client example using socket.io client in a web app:
 var socket = io.connect('http://localhost:5000');
 socket.on('connect', function () {
   socket.on('mqtt', function (msg) {
-  console.log(msg.topic+' '+msg.payload);
+    console.log(msg.topic+' '+msg.payload);
   });
   socket.emit('subscribe',{topic:'/some/sensor/data'});
 });
@@ -44,7 +44,7 @@ When new clients connect to the server it publishes a "Connected" message on the
 When the clients publish by:
 
 ```
-    socket.emit('publish',{topic:'/path',payload:'test'});
+socket.emit('publish',{topic:'/path',payload:'test'});
 ```
 
 The message ("test") will be sent to the path AppServer/session/{N}/{path}
