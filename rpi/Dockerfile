@@ -1,5 +1,5 @@
 # The first lines of your Dockerfile should always be:
-FROM node:0.12
+FROM hypriot/rpi-node
 MAINTAINER Leo Fidjeland (leo.fidjeland@gmail.com)
 # This indicates what base image you are using and who maintains the Dockerfile.
 
