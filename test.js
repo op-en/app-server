@@ -10,6 +10,7 @@ describe('App server', function(){
   it('connects to the app-server', function(done){
     var socket = io.connect(config.host,{multiplex: false});
     socket.on('connect', () => {
+      console.log('connect');
       //We don't need to close the socket manually, but it's nice. Be nice!
       socket.disconnect();
       done();

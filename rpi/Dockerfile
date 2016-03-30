@@ -9,5 +9,8 @@ ENV APP_SERVER_VERSION 0.1.5
 RUN npm install -g --unsafe-perm op-en-app-server@${APP_SERVER_VERSION}
 EXPOSE 5000
 
+# We set the server to mqtt, this way we can link the container with an mqtt broker
+ENV MQTT mqtt
+
 # We setup the run command. This is what happens when you run the compiled container.
 CMD ["op-en-app-server"]
