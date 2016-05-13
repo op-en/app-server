@@ -2,6 +2,8 @@
 
 This is part of the [Open Energy Project](http://op-en.se/), a research project aiming to make it easier and faster to prototype smart energy services.
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 ## Description
 
 This Node.js server is a bridge from MQTT to websockets using socket.io. The server is connected to an MQTT broker and relays all messages that the connected client requests.
