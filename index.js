@@ -16,7 +16,7 @@ io.sessionid = 0
 var host = config.mqtt_login ? config.mqtt_login + '@' + config.mqtt_host : config.mqtt_host
 log.log({type: 'info', msg: 'App server started', port: config.port, host: host})
 
-io.set('origins', '*')
+io.set('origins', '*:*')
 io.on('connection', function (socket) {
   this.sessionid = this.sessionid || 0
   this.sessionid = this.sessionid + 1
