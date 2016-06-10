@@ -66,7 +66,8 @@ io.on('connection', function (socket) {
 
   // Publish
   socket.on('publish', function (data) {
-    broker.publish('appserver/session/' + this.sessionid + '/' + data.topic, data.payload)
+    var topic = data.topic.replace("~/",'appserver/session/' + this.sessionid + '/')
+    broker.publish(topic, data.payload)
   })
 
   // Disconnection
