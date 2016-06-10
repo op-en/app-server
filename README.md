@@ -46,12 +46,14 @@ When new clients connect to the server it publishes a "Connected" message on the
 When the clients publish by:
 
 ```
-socket.emit('publish',{topic:'/path',payload:'test'});
+socket.emit('publish',{topic:'~/path',payload:'test'});
 ```
 
-The message ("test") will be sent to the path AppServer/session/{N}/{path}
+When the "~/path" is used in a topic the message ("test") will be sent to the path appserver/session/{N}/{path}
 
 Where N is the session id and path the topic in the emit command.
+
+Topics without "~/" works normally however depending on the appservers credentials broaker configuration all paths might not be readable.  
 
 ## Testing
 
