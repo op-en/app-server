@@ -1,0 +1,1 @@
+[{"influx_host":"127.0.0.1","influx_port":8086,"influx_login":"root","influx_passwd":"root","database":"1week","priority":1,"topic":"#","remapping_topic":"#"}]
