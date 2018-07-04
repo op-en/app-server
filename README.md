@@ -1,4 +1,4 @@
-# Open Energy App Server
+# Open Energy App Server/proxy
 
 This is part of the [Open Energy Project](http://op-en.se/), a research project aiming to make it easier and faster to prototype smart energy services.
 
@@ -16,7 +16,7 @@ The easiest way to install the proxy is to use docker. It can also be installed 
 ```
 npm install -g op-en-app-server
 ```
-To install the proxy as a docker container with docker and docker compose installed copy the following to a docker-compose.yml file 
+To install the proxy as a docker container with docker and docker-compose installed copy the following to a docker-compose.yml file 
 
 app-server:
   image: openenergy/app-server:version2
@@ -28,7 +28,7 @@ app-server:
     - influx2:influx
   environment:
     - LOGIN=appserver
-    - PASSWD=sde32dDDgl3234
+    - PASSWD=mysecretpassword
     - INFLUX_HOST=influx
     - INFLUX_DB=1week
     - INFLUX_PORT=8086
