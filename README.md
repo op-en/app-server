@@ -6,15 +6,48 @@ This is part of the [Open Energy Project](http://op-en.se/), a research project 
 
 ## Description
 
-This Node.js server is a bridge from MQTT to websockets using socket.io. The server is connected to an MQTT broker and relays all messages that the connected client requests.
+This Node.js proxy is a bridge from MQTT and influx databases to websockets using socket.io. The server is proxy to an MQTT broker and relays all messages that the connected client requests. I can also pull hitorical data from one or several influx databases. 
 
 If messages are published to the server, they are forwarded to the MQTT broker under the 'appserver/session/[id]' topic.
 
 ## Installation
+The easiest way to install the proxy is to use docker. It can also be installed with npm (node.js packet manager).
 
 ```
 npm install -g op-en-app-server
 ```
+To install the proxy as a docker container with docker and docker compose installed copy the following to a docker-compose.yml file 
+
+app-server:
+  image: openenergy/app-server:version2
+  restart: always
+  ports:
+    - "5000:5000"
+  links:
+    - mosquitto:mqtt
+    - influx2:influx
+  environment:
+    - LOGIN=appserver
+    - PASSWD=sde32dDDgl3234
+    - INFLUX_HOST=influx
+    - INFLUX_DB=1week
+    - INFLUX_PORT=8086
+    - INFLUX=/opt/cfg/data_map.json
+  volumes:
+    - appserver:/opt/cfg
+
+and run 
+```
+docker-compose up -d 
+```
+
+
+
+To install the proxy as a docker container copy the following to a docker-compose.yml file and docker-compose up -d . 
+To install the proxy as a docker container copy the following to a docker-compose.yml file and run
+docker-compose up -d . 
+
+
 
 ## Configuration
 
