@@ -16,8 +16,9 @@ The easiest way to install the proxy is to use docker. It can also be installed 
 ```
 npm install -g op-en-app-server
 ```
-To install the proxy as a docker container with docker and docker-compose installed copy the following to a docker-compose.yml file 
+To install the proxy as a docker container with docker and docker-compose installed copy the following to a docker-compose.yml file
 
+```
 app-server:
   image: openenergy/app-server:version2
   restart: always
@@ -35,8 +36,10 @@ app-server:
     - INFLUX=/opt/cfg/data_map.json
   volumes:
     - appserver:/opt/cfg
+```
 
 and run 
+
 ```
 docker-compose up -d 
 ```
