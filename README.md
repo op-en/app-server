@@ -6,7 +6,7 @@ This is part of the [Open Energy Project](http://op-en.se/), a research project 
 
 ## Description
 
-This Node.js proxy is a bridge from MQTT and influx databases to websockets using socket.io. The server is proxy to an MQTT broker and relays all messages that the connected client requests. I can also pull hitorical data from one or several influx databases. 
+This Node.js implemented proxy is a bridge from MQTT and influx databases to socket.io. The server is proxy to an MQTT broker and relays all messages that the connected client requests. I can also pull hitorical data from one or several influx databases. The use of socker.io allows automatic fallback from websockets to long polling. 
 
 If messages are published to the server, they are forwarded to the MQTT broker under the 'appserver/session/[id]' topic.
 
