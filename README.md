@@ -27,10 +27,10 @@ app-server:
     - mosquitto:mqtt
     - influx2:influx
   environment:
-    - LOGIN=appserver
-    - PASSWD=mysecretpassword
-    - INFLUX_HOST=influx
-    - INFLUX_DB=1week
+    - LOGIN=mqtt_username
+    - PASSWD=mysecret_mqtt_password
+    - INFLUX_HOST=influx_hostname
+    - INFLUX_DB=databasename
     - INFLUX_PORT=8086
     - INFLUX=/opt/cfg/data_map.json
   volumes:
