@@ -26,16 +26,38 @@ app-server:
     - "5000:5000"
   links:
     - mosquitto:mqtt
-    - influx2:influx
+    - influx:influx
   environment:
     - LOGIN=mqtt_username
     - PASSWD=mysecret_mqtt_password
-    - INFLUX_HOST=influx_hostname
+    - INFLUX_HOST=influx
     - INFLUX_DB=databasename
     - INFLUX_PORT=8086
     - INFLUX=/opt/cfg/data_map.json
   volumes:
     - appserver:/opt/cfg
+    
+influx:
+  image: influxdb:latest
+  restart: always
+  mem_limit: 6500000000
+  volumes:
+    - ./data/influxdbbackup:/var/lib/influxdb
+  ports:
+    - '8083:8083'
+    - '8086:8086'
+  environment:
+    - INFLUXDB_HTTP_LOG_ENABLED=false
+  container_name: influxdb
+  
+mosquitto:
+  image: openenergy/mosquitto
+  restart: always
+  volumes:
+    - ./settings/mosquitto:/etc/mosquitto
+  ports:
+    - '1883:1883'
+    
 ```
 
 and run 
@@ -43,12 +65,8 @@ and run
 ```
 docker-compose up -d 
 ```
+If your influx or MQTT serveces are locate elsewhere outside docker adjust enviroment variables. 
 
-
-
-To install the proxy as a docker container copy the following to a docker-compose.yml file and docker-compose up -d . 
-To install the proxy as a docker container copy the following to a docker-compose.yml file and run
-docker-compose up -d . 
 
 
 
