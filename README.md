@@ -16,7 +16,7 @@ The easiest way to install the proxy is to use docker. It can also be installed 
 ```
 npm install -g op-en-app-server
 ```
-To install the proxy as a docker container with docker and docker-compose installed copy the following to a docker-compose.yml file
+To install the proxy as a docker container with docker and docker-compose installed create youe docker-compose.yml file based on the follwing example:
 
 ```
 app-server:
