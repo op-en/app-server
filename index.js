@@ -21,8 +21,8 @@ var config = {
   verbose: process.env.VERBOSE === 'true' || false
 }
 
-if (mqtt_port != '')
-   mqtt_host = mqtt_host + ':' + mqtt_port
+if (config.mqtt_port != '')
+   config.mqtt_host = config.mqtt_host + ':' + config.mqtt_port
 
 
 
