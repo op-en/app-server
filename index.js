@@ -9,6 +9,7 @@ var fs = require('fs')
 var config = {
   port: process.env.PORT || 5000,
   mqtt_host: process.env.MQTT || '127.0.0.1',
+  mqtt_port: process.env.MQTT_PORT || '',
   influx_mapping: process.env.INFLUX || 'data_map.json',
   influx_host: process.env.INFLUX_HOST || '127.0.0.1',
   influx_port: process.env.INFLUX_PORT || 8086,
@@ -19,6 +20,10 @@ var config = {
   mqtt_passwd: process.env.PASSWD || '',
   verbose: process.env.VERBOSE === 'true' || false
 }
+
+if (mqtt_port != '')
+   mqtt_host = mqtt_host + ':' + mqtt_port
+
 
 
 //Default mapping from enviroments variables
